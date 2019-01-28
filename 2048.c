@@ -6,6 +6,7 @@ void nacrtaj(),promeni(char);
 int main()
 {
     int i,j,brojPoteza,poeni;
+    int pobeda=0,nijePoraz=0;
     char potez;
     time_t t;
     srand((unsigned) time(&t));
@@ -33,6 +34,13 @@ drugiBroj:
     printf("2 0 4 8\n~Tutkamon inc.\n\n");
     getchar();
 pocetak:
+    for(i=0;i<4;i++)
+    {
+        for (j=0;j<4;j++)
+        {
+            tabela[i][j]=0;
+        }
+    }
     brojPoteza=0;poeni=0;
     while(1)
     {
@@ -50,7 +58,7 @@ pocetak:
         }
         promeni(potez);
         brojPoteza++;
-        int pobeda=0,nijePoraz=0;
+        pobeda=0;nijePoraz=0;
         for(i=0;i<4;i++)
         {
             for (j=0;j<4;j++)
@@ -67,12 +75,12 @@ pocetak:
         }
         if(pobeda)
         {
-            printf("Cestitam, pobedili ste!\n\nBroj poteza:%8d\n\nPoeni:%8d\n",brojPoteza,poeni);
+            printf("Cestitam, pobedili ste!\n\nBroj poteza:%8d\n\nPoeni:      %8d\n",brojPoteza,poeni);
             break;
         }
         else if(!nijePoraz)
         {
-            printf("Izgubili ste...\n\nBroj poteza:%8d\n\nPoeni:%8d\n",brojPoteza,poeni);
+            printf("Izgubili ste...\n\nBroj poteza:%8d\n\nPoeni:      %8d\n",brojPoteza,poeni);
             break;
         }
     }
@@ -143,6 +151,7 @@ void promeni(char c)
                         {
                             chk=1;
                             tabela[i][k-1]++;
+                            poeni+=tabela[i][k-1];
                             tabela[i][k]=0;
                         }
                         else
@@ -168,6 +177,7 @@ void promeni(char c)
                         {
                             chk=1;
                             tabela[i][k+1]++;
+                            poeni+=tabela[i][k-1];
                             tabela[i][k]=0;
                         }
                         else
@@ -193,6 +203,7 @@ void promeni(char c)
                         {
                             chk=1;
                             tabela[k-1][i]++;
+                            poeni+=tabela[i][k-1];
                             tabela[k][i]=0;
                         }
                         else
@@ -218,6 +229,7 @@ void promeni(char c)
                         {
                             chk=1;
                             tabela[k+1][i]++;
+                            poeni+=tabela[i][k-1];
                             tabela[k][i]=0;
                         }
                         else
@@ -256,3 +268,4 @@ void promeni(char c)
         }
     }
 }
+
