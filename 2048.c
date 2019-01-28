@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 static int tabela[4][4];
+static int poeni=0;
 int stepen(int);
 void nacrtaj(),promeni(char);
 int main()
 {
-    int i,j,brojPoteza,poeni;
+    int i,j,brojPoteza;
     int pobeda=0,nijePoraz=0;
     char potez;
     time_t t;
@@ -268,4 +269,3 @@ void promeni(char c)
         }
     }
 }
-
